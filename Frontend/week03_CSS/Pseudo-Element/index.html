@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo Element Test</title>
+    <style>
+        .before h1::before{
+            content: "💕";
+        }
+        .before h1::after{
+            content: "💕";
+        }
+        .first p span{
+            font-size: 40px;
+        }
+        .line p::first-line{
+            color: red;
+        }
+        ::selection{
+            background: gray;
+            color: red;
+        }
+        .hoder input::placeholder{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="before">
+        <h1>Hello Mi hy</h1>
+    </div>
+    <div class="first">
+        <p><span>Lorem</span>, ipsum dolor sit amet consectetur adipisicing elit. <span>Eum</span>, doloribus!</p>
+    </div>
+    <div class="line">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>Incidunt, dignissimos?</p>
+    </div>
+    <div class="hoder">
+        <input type="text" placeholder="Input your name">
+    </div>
+</body>
+</html>

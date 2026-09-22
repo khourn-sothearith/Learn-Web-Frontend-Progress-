@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let id;
+        let name, brand, category;
+        let quantity;
+        let discount;
+        let price;
+        let total_price, payment;
+
+        id = prompt("Enter ID : ");
+        name = prompt("Enter Name: ");
+        brand = prompt("Enter Brand: ");
+        category = prompt("Enter Category: ");
+        quantity = Number(prompt("Enter Quantity: "));
+        discount = Number(prompt("Enter Discount: "));
+        price = Number(prompt("Enter Price: "));
+
+        total_price = quantity * price;
+        payment = total_price - (total_price * discount) / 100;
+        
+        document.write("-----POS----- </br>");
+        document.write("ID : " + id + "</br>");
+        document.write("Name : " + name + "</br>");
+        document.write("Brand : " + brand + "</br>");
+        document.write("Category : " + category + "</br>");
+        document.write("Quantity : " + quantity + "</br>");
+        document.write("Discount : " + discount + "</br>");
+        document.write("Price : " + price + "</br>");
+        document.write("--> Total Price : " + total_price.toFixed(2) + "</br>");
+        document.write("--> Payment : " + payment.toFixed(2));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

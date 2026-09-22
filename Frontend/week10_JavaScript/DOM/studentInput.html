@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <form class="form rounded-3 shadow-lg mt-5 p-4 bg-light w-75 m-auto">
+            <h2 class="text-danger fw-bold text-center">តារាងបញ្ចូលព័ត៍ំមានសិស្ស</h2><hr>
+            <div class="row pb-3">
+                <div class="col col-lg-6">
+                    <label class="form-label fw-bold">លេខរៀង</label>
+                    <input class="form-control" type="text" name="id" id="id">
+                </div>
+                <div class="col col-lg-6">
+                    <label class="form-label fw-bold">ឈ្មោះសិស្ស</label>
+                    <input class="form-control" type="text" name="name" id="name">
+                </div>
+            </div>
+            <div class="row pb-3">
+                <div class="col col-lg-6">
+                    <label class="form-label fw-bold">ឆ្នាំសិក្សា</label>
+                    <input class="form-control" type="text" name="year" id="year">
+                </div>
+                <div class="col col-lg-6">
+                    <label class="form-label fw-bold">លេខបន្ទប់</label>
+                    <input class="form-control" type="text" name="room" id="room">
+                </div>
+            </div>
+            <div class="row pb-3">
+                <div class="col col-lg-3">
+                    <label class="form-label fw-bold">HTML</label>
+                    <input class="form-control" type="text" id="html">
+                </div>
+                <div class="col col-lg-3">
+                    <label class="form-label fw-bold">CSS</label>
+                    <input class="form-control" type="text" id="css">
+                </div>
+                <div class="col col-lg-3">
+                    <label class="form-label fw-bold">PHP</label>
+                    <input class="form-control" type="text" id="php">
+                </div>
+                <div class="col col-lg-3">
+                    <label class="form-label fw-bold">JS</label>
+                    <input class="form-control" type="text" id="js">
+                </div>
+            </div><hr>
+            <button class="btn btn-danger px-3 mt-3" type="button" onclick="StudentsInfo()">Submit</button>
+        </form>
+        
+        <div id="stuInfo">
+            
+        </div>
+    </div>
+
+    <script>
+        function StudentsInfo(){
+            let id = document.getElementById("id").value;
+            let name = document.getElementById("name").value;
+            let year = document.getElementById("year").value;
+            let room = document.getElementById("room").value;
+            let html = Number(document.getElementById("html").value);
+            let css = Number(document.getElementById("css").value);
+            let php = Number(document.getElementById("php").value);
+            let js = Number(document.getElementById("js").value);
+
+            let total_score = html + css + php + js;
+            let average = total_score / 4;
+            let grade;
+
+            if(average >= 90){
+                grade = "A";
+            }else if(average >= 80){
+                grade = "B";
+            }else if(average >= 70){
+                grade = "C";
+            }else if(average >= 60){
+                grade = "D";
+            }else if(average >= 50){
+                grade = "E";
+            }else {
+                grade = "F";
+            }
+
+            document.getElementById("stuInfo").innerHTML += `
+                <p class="text-danger fw-bold mt-5">សិស្សឈ្មោះ ${name} ឆ្នាំ ${year} បន្ទប់ ${room}</p>
+                <table class="table table-bordered text-center">
+                    <thead">
+                        <tr>
+                            <th>ID</th>
+                            <th>HTML</th>
+                            <th>CSS</th>
+                            <th>PHP</th>
+                            <th>JS</th>
+                            <th>Total</th>
+                            <th>Average</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>${id}</td>
+                            <td>${html}</td>
+                            <td>${css}</td>
+                            <td>${php}</td>
+                            <td>${js}</td>
+                            <td>${total_score}</td>
+                            <td>${average.toFixed(2)}</td>
+                            <td>${grade}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

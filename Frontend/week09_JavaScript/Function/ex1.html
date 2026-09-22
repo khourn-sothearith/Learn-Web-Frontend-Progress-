@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Click the following button to call the function</p>
+    <form>
+        <input type="button" onclick="myfunction1()" value="Call Function">
+        <input type="button" onclick="myfunction2(12, 45)" value="Call Function">
+        <input type="button" onclick="myfunction3(12, 56, 4)" value="Call Function">
+    </form>
+    <p>Use different parameters inside the fucntion and then try...</p>
+    <script type="text/javascript">
+        function myfunction1(){
+            let x, y;
+            x = 100;
+            y = 300;
+            return x+y;
+        }
+        function myfunction2(x,y){
+            return x+y;
+        }
+        function myfunction3(x, y, z){
+            return x+y+z;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#8d73ff;
+    padding:20px;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+    background:white;
+    padding:10px;
+    border-radius:15px;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 40px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+}
+
+.logo h2{
+    font-size:15px;
+    color:#444;
+}
+
+.link ul{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+.link a{
+    text-decoration:none;
+    color:#444;
+    font-size:16px;
+}
+
+.link a:hover{
+    color:#2d6cff;
+}
+
+/* ================= BUTTON ================= */
+
+.btn{
+    display:flex;
+    gap:15px;
+}
+
+.btn2{
+    background:white;
+    border:1px solid #ccc;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.btn1{
+    background:none;
+    border:none;
+    font-size:15px;
+    cursor:pointer;
+}
+
+/* ================= NOTICE ================= */
+
+.notice{
+    margin-top:25px;
+    background:#2d6cff;
+    color:white;
+
+    padding:15px 20px;
+
+    border-radius:8px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.notice button{
+    padding:10px 18px;
+    background:white;
+    color:#2d6cff;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+.notice button > btnCancel{
+    background-color: none;
+    color: white;
+}

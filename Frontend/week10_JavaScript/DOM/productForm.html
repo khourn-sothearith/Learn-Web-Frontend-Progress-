@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class=" bg-secondary">
+    <div class=" container">
+        <form class="form p-4 mt-5 m-auto shadow-sm rounded-3 w-75 bg-light">
+            <h2 class="text-center fw-bold text-danger">Product POS</h2>
+            <div class="row pb-3">
+                <div class="col col-lg-12">
+                    <label class=" form-label fw-bold">Code Product</label>
+                    <input type="text" class=" form-control" id="code">
+                </div>
+            </div>
+            <div class="row pb-3">
+                <div class="col col-lg-4">
+                    <label class=" form-label fw-bold">Name Product</label>
+                    <input type="text" class=" form-control" id="name">
+                </div>
+                <div class="col col-lg-4">
+                    <label class=" form-label fw-bold">Category</label>
+                    <input type="text" class=" form-control" id="category">
+                </div>
+                <div class="col col-lg-4">
+                    <label class=" form-label fw-bold">Brand Product</label>
+                    <input type="text" class=" form-control" id="brand">
+                </div>
+            </div>
+            <div class="row pb-3">
+                <div class="col col-lg-6">
+                    <label class=" form-label fw-bold">Quantity of Product</label>
+                    <input type="text" class=" form-control" id="qty">
+                </div>
+                <div class="col col-lg-6">
+                    <label class=" form-label fw-bold">Price of Product</label>
+                    <input type="text" class=" form-control" id="price">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-lg-12">
+                    <lable class=" form-label fw-bold">Image Product</lable>
+                    <input type="url" class="form-control mt-2" id="img">
+                </div>
+            </div>
+            <button class="btn btn-danger px-4 mt-4" type="button" onclick="Products()" data-bs-toggle="modal" data-bs-target="#exampleModal">Submit</button>
+        </form>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-3 fw-bold text-danger" id="exampleModalLabel">Product Receipt</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="receiptBody">
+                        <!-- ... -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger">Print Receipt</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function Products(){
+            let code = document.getElementById("code").value;
+            let name = document.getElementById("name").value;
+            let qty = Number(document.getElementById("qty").value);
+            let price = Number(document.getElementById("price").value);
+            let brand = document.getElementById("brand").value;
+            let category =document.getElementById("category").value;
+            let img = document.getElementById("img").value;
+
+            let total_price = qty*price;
+            let discount;
+
+            if(total_price <= 100 && total_price >= 20){
+                discount = 5;
+            }else if(total_price > 100){
+                discount = 10;
+            }else {
+                discount = 0;
+            }
+
+            let payment = total_price - (total_price * discount) / 100;
+
+            let receiptHTML = `
+                <h5 class="fw-bold ">Receipt Details</h5>
+                <table class="table table-bordered">
+                    <tr><th>Code</th><td>${code}</td></tr>
+                    <tr><th>Name</th><td>${name}</td></tr>
+                    <tr><th>Category</th><td>${category}</td></tr>
+                    <tr><th>Brand</th><td>${brand}</td></tr>
+                    <tr><th>Quantity</th><td>${qty}</td></tr>
+                    <tr><th>Price</th><td>$${price}</td></tr>
+                    <tr><th>Total</th><td>$${total_price}</td></tr>
+                    <tr><th>discount</th><td>${discount}%</td></tr>
+                    <tr><th>Final Payment</th><td><strong>$${payment}</strong></td></tr>
+                    <tr><th>Image</th><td><img src="${img}" style="width:100px;" alt="Product Image"></td></tr>
+                </table>
+            `;
+
+            document.getElementById("receiptBody").innerHTML = receiptHTML;
+
+            alert("Submit is Successfull!");
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

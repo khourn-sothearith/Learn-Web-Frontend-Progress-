@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let persion = [
+            {
+                id: 1,
+                name: "Ah poy",
+                gender: "Male",
+            },
+            {
+                id: 2,
+                name: "Hg Lok man",
+                gender: "Male",
+            }
+        ];
+        
+        document.write("Number of Array: " + persion.length + "</br>");
+        persion.forEach((data)=>{
+            document.write("ID: " + data.id + "</br>");
+            document.write("Name: " + data.name + "</br>");
+            document.write("Gender: " + data.gender + "</br>");
+        })
+    </script>
+</body>
+</html>

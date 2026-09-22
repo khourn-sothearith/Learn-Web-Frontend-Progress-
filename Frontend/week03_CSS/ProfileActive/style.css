@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.profile{
+    width: 300px;
+    height: 300px;
+    margin-left: 50px;
+    margin-top: 40px;
+    background-image: url("https://i.redd.it/batman-profile-pics-v0-qrz10k9s6fid1.jpg?width=542&format=pjpg&auto=webp&s=2f848b2d6644cbb03e0116e28755cd7e0a63319a");
+    background-size: cover;
+    position: relative;
+    border-radius: 100%;
+    border: 5px solid blue;
+}
+.profile > .active{
+    width: 20%;
+    height: 20%;
+    border: 3px solid white;
+    border-radius: 100%;
+    background-color: green;
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+}

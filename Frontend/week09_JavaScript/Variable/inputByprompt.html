@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let id;
+        let name;
+        let gender, age;
+        let score1, score2, score3, score4, score5;
+        let total_score, everage;
+
+        // Use to load alert Input
+        id = prompt("Enter ID : ");
+        name = prompt("Enter Name: ");
+        gender = prompt("Enter Gender: ");
+        age = prompt("Enter Age : ");
+        // same liek above but declear it is Number
+        score1 = Number(prompt("Enter Score1: "));
+        score2 = Number(prompt("Enter Socre2: "));
+        score3 = Number(prompt("Enter Score3: "));
+        score4 = Number(prompt("Enter Score4: "));
+        score5 = Number(prompt("Enter Score5: "));
+
+        total_score = score1 + score2 + score3 + score4 + score5;
+        average = total_score/5;
+
+        document.write("-----Student Info----- </br>");
+        document.write("ID : " + id + "</br>");
+        document.write("Name : " + name + "</br>");
+        document.write("Gender: " + gender + "</br>");
+        document.write("Age : " + age + "</br>");
+        document.write("Score1 : " + score1 + "</br>");
+        document.write("Score2 : " + score2 + "</br>");
+        document.write("Score3 : " + score3 + "</br>");
+        document.write("Score4 : " + score4 + "</br>");
+        document.write("Score5 : " + score5 + "</br>");
+        document.write("--> Total Score : " + total_score + "</br>");
+        document.write("--> Average : " + average)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

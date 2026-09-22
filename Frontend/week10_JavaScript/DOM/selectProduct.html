@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Task</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class="bg-secondary">
+    <div class="container">
+        <form class="form p-4 mt-5 m-auto shadow-sm rounded-3 w-50 bg-light">
+            <h2 class=" fw-bold text-danger mb-4">Coffee Shop</h2><hr>
+            <div class="row pb-3">
+                <div class="col col-lg-12">
+                    <label class="form-label fw-bold">Menu</label>
+                    <select class="form-control" placeholder="Select your Drink" id="price">
+                        <option value="2.5">Macha latte</option>
+                        <option value="3.2">Stubery latte</option>
+                        <option value="2.2">Ice latte</option>
+                        <option value="5.1">Ice Capochino</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-lg-12">
+                    <label class="form-label fw-bold">Quantity</label>
+                    <input type="number" class="form-control" placeholder="Enter Quantity" id="qty">
+                </div>
+            </div>
+            <hr>
+            <button class="btn btn-danger px-3 mt-3" type="button" onclick="Product()" data-bs-toggle="modal" data-bs-target="#exampleModal">Buy Now</button>
+        </form>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-3 fw-bold text-danger" id="exampleModalLabel">Product Receipt</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="receipt">
+                        <!-- ... -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger">Print Receipt</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p></p>
+    <script>
+        function Product(){
+                let select = document.getElementById("price");
+                let productName = select.options[select.selectedIndex].text;
+                let price = Number(select.value);
+                let qty = Number(document.getElementById("qty").value);
+
+                let total_price = qty * price;
+                let discount;
+
+                if(total_price >= 10){
+                    discount = 10;
+                } else {
+                    discount = 0.1;
+                }
+
+                let payment = total_price - (total_price * discount / 100);
+
+                document.getElementById("receipt").innerHTML  = `
+                    <h5 class="fw-bold text-danger">Receipt Details</h5>
+                    <table class="table table-bordered">
+                        <tr><th>Product</th><td>${productName}</td></tr>
+                        <tr><th>Price</th><td>$${price.toFixed(2)}</td></tr>
+                        <tr><th>Quantity</th><td>${qty}</td></tr>
+                        <tr><th>Total Price</th><td>$${total_price.toFixed(2)}</td></tr>
+                        <tr><th>Discount</th><td>${discount}%</td></tr>
+                        <tr><th>Final Payment</th><td><strong>$${payment.toFixed(2)}</strong></td></tr>
+                    </table>
+                `;
+            }
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

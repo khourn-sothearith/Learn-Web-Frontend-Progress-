@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container text-center">
+        <h2>Employee Information</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Position</th>
+                    <th>Salary</th>
+                    <th>Bonus</th>
+                    <th>Total Salary</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+                
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let id;
+        let name, gender;
+        let position;
+        let salary, total_salary;
+        let bonus;
+
+        id = prompt("Enter your ID: ");
+        name = prompt("Enter your Name : ");
+        gender = prompt("Enter your Gender : ");
+        position = prompt("Enter your Position : ");
+        salary = Number(prompt("Enter your Salary : "));
+
+        if (position.toLowerCase() === "it" || position.toLowerCase() === "hr"){
+            bonus = 25;
+        } else if(position.toLowerCase() === "cleaner" || position.toLowerCase() === "security"){
+            bonus = 10;
+        }else{
+            bonus = 0;
+        }
+
+        total_salary = salary + bonus;
+
+        document.getElementById("data").innerHTML = `
+            <tr>
+                <th>${id}</th>
+                <th>${name}</th>
+                <th>${gender}</th>
+                <th>${position}</th>
+                <th>${salary}</th>
+                <th>${bonus}</th>
+                <th>${total_salary}</th>
+            </tr>
+        `;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

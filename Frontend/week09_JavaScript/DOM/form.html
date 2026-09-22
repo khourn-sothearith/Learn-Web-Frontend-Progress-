@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <!-- Form -->
+    <div class="container">
+        <form class="form rounded-4 shadow-lg mt-5 p-4 m-auto w-75">
+            <h2 class="pb-4 fw-bold">
+                Form Student Informatin.
+            </h2>
+            <div class="row pb-3">
+                <div class="col col-lg-6">
+                    <label class="form-label">Stuent ID</label>
+                    <input type="text" class="form-control" id="id">
+                </div>
+                <div class="col col-lg-6">
+                    <label class="form-label"> Name</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+            </div>  
+            <div class="row pb-3">
+                <div class="col col-lg-6">
+                    <lable class="form-label">Gender</lable>
+                    <input type="text" class="form-control" id="gender">
+                </div>
+                <div class="col col-lg-6">
+                    <lable class="form-label">Age</lable>
+                    <input type="text" class="form-control" id="age">
+                </div>
+            </div>  
+            <div class="row pb-3">
+                <div class="col col-lg-4">
+                    <label class="form-label">HTML Score</label>
+                    <input type="text" class="form-control" id="html">
+                </div>
+                <div class="col col-lg-4">
+                    <label class="form-label">JS Score</label>
+                    <input type="text" class="form-control" id="js">
+                </div>
+                <div class="col col-lg-4">
+                    <label class="form-label">Bootstrap Score</label>
+                    <input type="text" class="form-control" id="boot">
+                </div>
+            </div>
+            <button onclick="StudentInfo()" class="btn btn-success px-4" type="button">Submit</button>
+        </form>
+
+        <!-- out put -->
+        <h2 class="fw-bold py-4">Table Student Information</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>HTML Score</th>
+                    <th>JS Score</th>
+                    <th>BootStrap Score</th>
+                    <th>Total_Score</th>
+                    <th>Everage</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody id="output">
+    
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function StudentInfo(){
+            let id = document.getElementById("id").value;
+            let name = document.getElementById("name").value;
+            let gender = document.getElementById("gender").value;
+            let age = document.getElementById("age").value;
+            
+            let html = Number(document.getElementById("html").value);
+            let js = Number(document.getElementById("js").value);
+            let boot = Number(document.getElementById("boot").value);
+
+            let grade;
+            let total_score = html + js + boot;
+            let everage = total_score/3;
+
+            if(everage >= 90){
+                grade = "A";
+            }else if(everage >= 80){
+                grade = "B";
+            }else if(everage >= 70){
+                grade = "C";
+            }else if(everage >= 60){
+                grade = "D";
+            }else if(everage >= 50){
+                grade = "E";
+            }else{
+                grade = "F";
+            }
+
+            document.getElementById("output").innerHTML += 
+            `
+                <tr>
+                    <td>${id}</td>    
+                    <td>${name}</td>    
+                    <td>${gender}</td>    
+                    <td>${age}</td>    
+                    <td>${html.toFixed(2)}</td>    
+                    <td>${js.toFixed(2)}</td>    
+                    <td>${boot.toFixed(2)}</td>    
+                    <td>${total_score.toFixed(2)}</td>    
+                    <td>${everage.toFixed(2)}</td>    
+                    <td>${grade}</td>    
+                </tr>
+            `;
+
+            // reset form
+            document.getElementById("id").value = "";
+            document.getElementById("name").value = "";
+            document.getElementById("gender").value = "";
+            document.getElementById("age").value = "";
+            document.getElementById("html").value = "";
+            document.getElementById("js").value = "";
+            document.getElementById("boot").value = "";
+            document.getElementById("total_score").value = "";
+            document.getElementById("everage").value = "";
+            document.getElementById("grade").value = "";
+
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
