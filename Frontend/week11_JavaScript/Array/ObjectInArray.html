@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="data">
+
+        </tbody>
+    </table>
+    <script>
+        let Students = [
+            {
+                id: 1,
+                name: "Rith",
+                gender: "Male",
+                status: "Single"
+            },
+            {
+                id: 2,
+                name: "Ry",
+                gender: "Famale",
+                status: "Single"
+            },
+            {
+                id: 3,
+                name: "Rotha",
+                gender: "Male",
+                status: "Inrelation"
+            }
+        ];
+
+        let list = "";
+
+        Students.forEach((data) =>{
+            list += `
+            <tr>
+                <td>${data.id}</td>
+                <td>${data.name}</td>
+                <td>${data.gender}</td>
+                <td>${data.status}</td>
+            </tr>
+            `;
+        });
+
+        document.getElementById("data").innerHTML = list;
+
+    </script>
+</body>
+</html>
