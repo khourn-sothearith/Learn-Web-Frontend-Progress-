@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <form class="w-50 m-auto rounded-3 p-3 border border-black shadow-sm mt-5">
+            <h2 class="fw-bold text-center mb-3">Products Information</h2><hr>
+            <div class="row">
+                <div class="col col-6">
+                    <label for="" class="form-label">Products Name</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <div class="col col-6">
+                    <label for="" class="form-label">Products Brand</label>
+                    <input type="text" class="form-control" id="brand">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-4">
+                    <label for="" class="form-label">Products Category</label>
+                    <input type="text" class="form-control" id="category">
+                </div>
+                <div class="col col-4">
+                    <label for="" class="form-label">Products Price</label>
+                    <input type="text" class="form-control" id="price">
+                </div>
+                <div class="col col-4">
+                    <label for="" class="form-label">Stock</label>
+                    <input type="text" class="form-control" id="stock">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-12">
+                    <label for="" class="form-label">Products Images</label>
+                    <input type="text" class="form-control" id="image">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-12">
+                    <label for="" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="description"><hr>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-success" type="button" onclick="Create()">Add Product</button>
+            </div>
+        </form>
+
+        <!-- Modal -->
+        <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="ModalLabel">Edit Product</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                        <div class="col col-6">
+                            <label for="" class="form-label">Products Name</label>
+                            <input type="text" class="form-control" id="editName">
+                        </div>
+                        <div class="col col-6">
+                            <label for="" class="form-label">Products Brand</label>
+                            <input type="text" class="form-control" id="editBrand">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-4">
+                            <label for="" class="form-label">Products Category</label>
+                            <input type="text" class="form-control" id="editCategory">
+                        </div>
+                        <div class="col col-4">
+                            <label for="" class="form-label">Products Price</label>
+                            <input type="text" class="form-control" id="editPrice">
+                        </div>
+                        <div class="col col-4">
+                            <label for="" class="form-label">Stock</label>
+                            <input type="text" class="form-control" id="editStock">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-12">
+                            <label for="" class="form-label">Products Images</label>
+                            <input type="text" class="form-control" id="editImage">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-12">
+                            <label for="" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="editDescription">
+                        </div>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="Update()">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form action="" class="p-3 border border-black rounded-3 mt-5">
+            <h2 class="text-center fw-bold">Our Products</h2>
+            <table class="table mt-3 text-center">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Brand</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+    
+                <tbody id="listproduct">
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <script>
+        let Products = [];
+        let editIndex = -1; //This variable remembers the product's index
+
+        function Create(){
+            let id;
+            let name = document.getElementById("name").value;
+            let brand = document.getElementById("brand").value;
+            let category = document.getElementById("category").value;
+            let price = document.getElementById("price").value;
+            let stock = document.getElementById("stock").value;
+            let image = document.getElementById("image").value;
+            let description = document.getElementById("description").value;
+
+            let product = {
+                id: Products.length + 1,
+                name: name,
+                brand: brand,
+                category: category,
+                price: price,
+                stock: stock,
+                image: image,
+                description: description,
+            }
+
+            Products.push(product);
+            Display();
+
+            document.getElementById("name").value = "";
+            document.getElementById("brand").value = "";
+            document.getElementById("category").value = "";
+            document.getElementById("price").value = "";
+            document.getElementById("stock").value = "";
+            document.getElementById("image").value = "";
+            document.getElementById("description").value = "";
+        }
+
+        function Display(){
+            let listProduct = document.getElementById("listproduct");
+
+            listProduct.innerHTML = "";
+            Products.forEach((product, index) =>{
+                listProduct.innerHTML += 
+                `
+                    <tr>
+                        <td>${product.id}</td>
+                        <td>
+                            <div style="width: 60px;">
+                                <img src=${product.image} alt="" class="w-100 object-fit-cover d-block mx-auto">
+                            </div>
+                        </td>
+                        <td>${product.name}</td>
+                        <td>${product.brand}</td>
+                        <td>${product.category}</td>
+                        <td>${product.price}</td>
+                        <td>${product.stock}</td>
+                        <td>
+                            <div>
+                                <button onclick="Edit(${index})" type="button" class="btn btn-primary px-4" data-bs-toggle="modal" data-bs-target="#Modal">Edit</button>
+                                <button type="button" onclick="Delete(${index})" class="btn btn-danger">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            })
+        }
+        function Edit(index) {
+            let product = Products[index];
+            editIndex = index;
+            
+            document.getElementById("editName").value = product.name;
+            document.getElementById("editBrand").value = product.brand;
+            document.getElementById("editCategory").value = product.category;
+            document.getElementById("editPrice").value = product.price;
+            document.getElementById("editStock").value = product.stock;
+            document.getElementById("editImage").value = product.image;
+            document.getElementById("editDescription").value = product.description;
+        }
+        function Update(){
+            Products[editIndex].name = document.getElementById("editName").value;
+            Products[editIndex].brand = document.getElementById("editBrand").value;
+            Products[editIndex].category = document.getElementById("editCategory").value;
+            Products[editIndex].price = document.getElementById("editPrice").value;
+            Products[editIndex].stock = document.getElementById("editStock").value;
+            Products[editIndex].image = document.getElementById("editImage").value;
+            Products[editIndex].description = document.getElementById("editDescription").value;
+
+            Display();
+
+            let modal = bootstrap.Modal.getInstance(document.getElementById("Modal"));
+            modal.hide();
+        }
+        function Delete(index) {
+            Products.splice(index, 1);
+            Display();
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
