@@ -136,6 +136,9 @@ ETEC_FULL_STACK_WEB/
 │   ├── 📁 week10_JavaScript/
 │   │   └── JavaScript practice
 │   │
+│   ├── 📁 week11_JavaScript/
+│   │   └── Array
+│   │
 │   └── 📁 zando/
 │       └── E-commerce website practice project
 │
